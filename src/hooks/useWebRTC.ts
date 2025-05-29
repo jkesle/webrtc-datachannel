@@ -17,30 +17,6 @@ type SignalMessage =
     | PingMessage
     | PongMessage
 
-// function isSignalingMessage(object: any): object is SignalMessage {
-//     if (typeof object !== 'object' || object == null) return false;
-//     switch (object.type) {
-//         case 'paired':
-//             return typeof object.initiator === 'boolean';
-//         case 'offer':
-//             return typeof object.offer == 'object'
-//                 && typeof object.offer.type === 'string'
-//                 && typeof (object.offer?.sdp ?? '') === 'string';
-//         case 'answer':
-//             return typeof object.answer === 'object'
-//                 && typeof object.answer.type === 'string'
-//                 && object.answer.type === 'answer'
-//                 && (object.answer?.sdp ?? '') === 'string';
-//         case 'ice-candidate':
-//             console.log(object.candidate);
-//             return typeof object.candidate === 'object' || typeof object.candidate === 'string';
-//         default:
-//             return object.type === 'waiting' 
-//                 || object.type === 'ping' 
-//                 || object.type === 'pong';
-//     }
-// }
-
 export default function useWebRTC(onData: (data: ArrayBuffer) => void, signalServerUrl: string = import.meta.env.VITE_WSS_URL) {
     const [paired, setPaired] = useState(false);
     const [waiting, setWaiting] = useState(false);
